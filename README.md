@@ -8,3 +8,26 @@
 - エラー通りに Rails のバージョンを合わせた
 - yarn と npm を入れたりもした
 - config/webpacker.yml の、development の compile を true に書き換えた
+
+起動方法
+
+```powershell
+docker-compose build
+docker-compose run web rails db:create
+docker-compose up
+```
+
+した後に、別のターミナルを起動して(上手くいかなかったら動かしてる docker ファイルディレクトリまで移動)
+
+```powershell
+docker-compose exec web bash
+```
+
+すると入れる！場合によっては
+bin/rails db:migrate rails_env=development
+のエラーが http://localhost:3000/ で出ているので、そこで
+bin まで移動してから
+
+```powershell
+rails db:migrate rails_env=development
+```
